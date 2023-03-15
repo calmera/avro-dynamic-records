@@ -45,7 +45,7 @@
     <scm>
         <connection>scm:git:git@github.com:calmera/avro-dynamic-records.git</connection>
         <url>scm:git:git@github.com/calmera/avro-dynamic-records</url>
-        <developerConnection>scm:git:https://github.com/avro-dynamic-records.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/calmera/avro-dynamic-records.git</developerConnection>
       <tag>HEAD</tag>
   </scm>
 
