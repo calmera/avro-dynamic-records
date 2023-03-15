@@ -34,9 +34,7 @@ jobs:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         run: |
-          mvn \
-            --no-transfer-progress \
-            --batch-mode \
+          mvn -B -U \
             -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} \
             release:prepare release:perform
 
