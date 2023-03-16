@@ -22,6 +22,12 @@
     <version>0.0.3-SNAPSHOT</version>
     <name>Avro Dynamic Records</name>
     <packaging>jar</packaging>
+    <url>https://github.com/calmera/avro-dynamic-records</url>
+    <description>
+        Avro Dynamic Records (DyRe) introduces a new way of working with data in your
+        event-processing application. Instead of generating out code, it takes the approach
+        of writing an interface and seamlessly link it to the data underneath.
+    </description>
 
     <properties>
         <java.version>17</java.version>
