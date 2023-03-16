@@ -24,6 +24,15 @@ exactly what we want; the strong typed interface translating to and from a Gener
 are available to hook these dynamic records into your kafka streaming logic.
 
 ## Getting Started
+### Add the dependency to your maven project
+```xml
+    <dependency>
+        <groupId>io.github.calmera</groupId>
+        <artifactId>avro-dynamic-records</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+```
+
 ### Put your avro schema in the schema registry
 ```avro schema
 {
