@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.calmera</groupId>
     <artifactId>avro-dynamic-records</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>Avro Dynamic Records</name>
     <packaging>jar</packaging>
 
@@ -61,7 +61,7 @@
         <connection>scm:git:git@github.com:calmera/avro-dynamic-records.git</connection>
         <url>scm:git:git@github.com/calmera/avro-dynamic-records</url>
         <developerConnection>scm:git:https://github.com/calmera/avro-dynamic-records.git</developerConnection>
-      <tag>0.0.2</tag>
+      <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
