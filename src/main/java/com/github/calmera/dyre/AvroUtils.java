@@ -22,18 +22,16 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.github.calmera.dyre.annotations.DyreField;
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static com.github.calmera.dyre.DyreUtils.getFieldName;
 
 /**
  * @author Daan Gerits
@@ -89,7 +87,7 @@ public abstract class AvroUtils {
 		}
 
 		// -- determine the field names
-		Set<String> fieldNames = new HashSet<>();
+		SortedSet<String> fieldNames = new TreeSet<>();
 		fieldNames.addAll(getters.keySet());
 		fieldNames.addAll(setters.keySet());
 		fieldNames.addAll(adders.keySet());

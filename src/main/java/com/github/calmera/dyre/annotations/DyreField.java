@@ -27,9 +27,7 @@ public @interface DyreField {
 
 	/**
 	 * Indicator to signal if the field is required or not
-	 *
-	 * defaults to true.
-	 * @return true if required, false if not
+	 * @return true if required, false if not; defaults to true.
 	 */
 	boolean required() default true;
 

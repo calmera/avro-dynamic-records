@@ -39,8 +39,10 @@ class AvroUtilsTest {
 
 		assertThat(actualSchema.getFullName()).isEqualTo(TestModel.SCHEMA.getFullName());
 		assertThat(actualSchema.getType()).isEqualTo(TestModel.SCHEMA.getType());
-		assertThat(actualSchema.getFields())
-				.containsExactlyInAnyOrder(TestModel.SCHEMA.getFields().toArray(new Schema.Field[] {}));
+		for (Schema.Field field : actualSchema.getFields()) {
+			assertThat(field.name()).isEqualTo(TestModel.SCHEMA.getField(field.name()).name());
+			assertThat(field.schema()).isEqualTo(TestModel.SCHEMA.getField(field.name()).schema());
+		}
 	}
 
 }

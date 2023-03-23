@@ -33,15 +33,26 @@ import com.github.calmera.dyre.annotations.DyreRecord;
 public interface TestModel extends DynamicRecord {
 
 	// @formatter: off
-	Schema SCHEMA = SchemaBuilder.builder().record("TestModel").fields().requiredString("required_value")
-			.name("optional_value").type(SchemaBuilder.unionOf().nullType().and().stringType().endUnion()).noDefault()
-			.name("required_enum").type(SchemaBuilder.enumeration("TestEnum").symbols("Option1", "Option2", "Option3"))
-			.noDefault().name("optional_enum")
-			.type(SchemaBuilder.unionOf().nullType().and().enumeration("TestEnum")
-					.symbols("Option1", "Option2", "Option3").endUnion())
-			.noDefault().name("string_list").type(SchemaBuilder.array().items(SchemaBuilder.builder().stringType()))
-			.noDefault().name("string_map").type(SchemaBuilder.map().values(SchemaBuilder.builder().stringType()))
-			.noDefault().endRecord();
+	Schema SCHEMA = SchemaBuilder.builder().record("TestModel").fields()
+		.name("optional_enum")
+			.type(SchemaBuilder.unionOf()
+				.nullType().and()
+				.enumeration("TestEnum").symbols("Option1", "Option2", "Option3").endUnion())
+			.withDefault(null)
+		.name("optional_value")
+			.type(SchemaBuilder.unionOf().nullType().and().stringType().endUnion())
+			.withDefault(null)
+		.name("required_enum")
+			.type(SchemaBuilder.enumeration("TestEnum").symbols("Option1", "Option2", "Option3"))
+			.noDefault()
+		.requiredString("required_value")
+		.name("string_list")
+			.type(SchemaBuilder.array().items(SchemaBuilder.builder().stringType()))
+			.noDefault()
+		.name("string_map")
+			.type(SchemaBuilder.map().values(SchemaBuilder.builder().stringType()))
+			.noDefault()
+	.endRecord();
 
 	// @formatter: on
 

@@ -123,7 +123,7 @@ public class DefaultValueDecoder implements ValueDecoder {
 		// generic record and will be
 		// -- passed directly otherwise
 		if (expected.isEnum()) {
-			String value = null;
+			String value;
 			if (in instanceof GenericData.EnumSymbol s) {
 				value = s.toString();
 			}
