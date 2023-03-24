@@ -41,5 +41,5 @@ jobs:
           MAVEN_GPG_PASSPHRASE: "${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}"
           MAVEN_OPTS: "--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
         run: |
-          mvn --batch-mode \
+          mvn -P release --batch-mode \
             release:prepare release:perform
