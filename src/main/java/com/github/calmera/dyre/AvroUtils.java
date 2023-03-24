@@ -33,6 +33,8 @@ import org.apache.avro.SchemaBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.apache.avro.Schema.Field.NULL_DEFAULT_VALUE;
+
 /**
  * @author Daan Gerits
  * @author Tim Ysewyn
@@ -99,7 +101,10 @@ public abstract class AvroUtils {
 			try {
 				Type fieldType = getTypeOfField(fieldName, getters.get(fieldName), setters.get(fieldName));
 				Schema fieldSchema = schemaForField(fieldType, annotations.get(fieldName));
-				fields.add(new Schema.Field(fieldName, fieldSchema));
+
+				fields.add(new Schema.Field(
+					fieldName, fieldSchema, null,
+					isOptional(annotations.get(fieldName)) ? NULL_DEFAULT_VALUE : null));
 			}
 			catch (ValueMappingException vme) {
 				throw new ValueMappingException("failed to map field " + fieldName + ": " + vme.getMessage(), vme);
@@ -192,6 +197,15 @@ public abstract class AvroUtils {
 		}
 
 		throw new ValueMappingException("No getter or setter found for field " + fieldName);
+	}
+
+	private static boolean isOptional(Map<Class<? extends Annotation>, Annotation> fieldAnnotations) {
+		var annotation = fieldAnnotations.get(DyreField.class);
+		if (annotation == null) {
+			return false;
+		}
+
+		return ! ((DyreField) annotation).required();
 	}
 
 	private static Schema makeOptionalIfNeeded(Schema schema, DyreField anno) {

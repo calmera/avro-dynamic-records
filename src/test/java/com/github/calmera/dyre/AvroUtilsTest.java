@@ -42,6 +42,15 @@ class AvroUtilsTest {
 		for (Schema.Field field : actualSchema.getFields()) {
 			assertThat(field.name()).isEqualTo(TestModel.SCHEMA.getField(field.name()).name());
 			assertThat(field.schema()).isEqualTo(TestModel.SCHEMA.getField(field.name()).schema());
+
+			if (TestModel.SCHEMA.getField(field.name()).defaultVal() != null) {
+				assertThat(field.defaultVal())
+					.withFailMessage("Default value for field " + field.name() + " does not match: expected " + TestModel.SCHEMA.getField(field.name()).defaultVal() + ", actual " + field.defaultVal() + ".")
+					.isEqualTo(TestModel.SCHEMA.getField(field.name()).defaultVal());
+			}
+			else {
+				assertThat(field.defaultVal()).isNull();
+			}
 		}
 	}
 
